@@ -1,6 +1,7 @@
 export const AppConfig = {
-  site_name: 'Alzheimer Classification App',
-  title: 'Alzheimer Classification App',
+  site_name: 'SenApp',
+  title: 'SenApp',
   description: 'Alzheimer Classification App',
   locale: 'en',
+  logo: 'assets/images/logo.svg',
 };
