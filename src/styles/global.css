@@ -1,7 +1,6 @@
-@tailwind base;
 
 body {
-  font-family: "Mulish", sans-serif;
+  font-family: 'Roboto', sans-serif;
   margin: 1.5em;
 }
 
@@ -9,7 +8,7 @@ body {
 
 @tailwind utilities;
 
-a {
+nav a {
   text-decoration: none;
   @apply text-sm;
 }
@@ -21,6 +20,7 @@ h1 {
   @apply font-bold;
 }
 
+/* Navigation */
 nav {
   @apply fixed;
   @apply right-0;
@@ -52,6 +52,8 @@ nav ul {
 .nav__item:hover {
   @apply bg-gray-200;
 }
+
+/* Main Section */
 
 .hero-img {
   @apply absolute;
@@ -243,6 +245,11 @@ section.hero > svg > path {
   .hero-img {
     background-position: center;
   }
+
+  .navigation {
+    @apply max-w-screen-xl;
+    @apply mx-auto;
+  }
 }
 
 @keyframes introLoad {
@@ -271,4 +278,11 @@ section.hero > svg > path {
     @apply opacity-100;
     transform: translateY(0x);
   }
+}
+
+
+.btn__close {
+  @apply absolute;
+  @apply top-5;
+  @apply left-5;
 }
