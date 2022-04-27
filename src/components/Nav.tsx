@@ -10,7 +10,7 @@ const Nav = (props: IMainProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="flex justify-between">
+    <header className="navigation flex justify-between">
       <Link href="/">
         <a className="logo">
           {/* <img src={props.logo} alt="logo" className="h-20 w-20" /> */}
@@ -33,17 +33,22 @@ const Nav = (props: IMainProps) => {
         <ul className="list-none p-0">
           <li className="">
             <Link href="/">
-              <a className="nav__item">Home</a>
+              <a className="nav__item">Inicio</a>
             </Link>
           </li>
           <li>
             <Link href="/about">
-              <a className="nav__item">About</a>
+              <a className="nav__item">Sobre Nosotros</a>
             </Link>
           </li>
           <li>
-            <Link href="/register">
-              <a className="nav__item">Register</a>
+            <Link href="/signup">
+              <a className="nav__item">Registro</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/login">
+              <a className="nav__item">Iniciar Sesión</a>
             </Link>
           </li>
           <li>
