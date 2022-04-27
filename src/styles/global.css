@@ -1,21 +1,274 @@
 @tailwind base;
 
-a {
-  @apply text-blue-700;
-}
-
-a:hover {
-  @apply border-b-2 border-blue-700;
+body {
+  font-family: "Mulish", sans-serif;
+  margin: 1.5em;
 }
 
 @tailwind components;
 
 @tailwind utilities;
 
-.content p {
-  @apply my-6;
+a {
+  text-decoration: none;
+  @apply text-sm;
 }
 
-.content ul {
-  @apply my-6;
+h1 {
+  @apply text-5xl;
+  line-height: 3.3rem;
+  margin-top: 2em;
+  @apply font-bold;
+}
+
+nav {
+  @apply fixed;
+  @apply right-0;
+  @apply top-0;
+  @apply z-50;
+  @apply h-screen;
+  @apply w-1/2;
+  @apply translate-x-full;
+  @apply bg-white;
+  @apply uppercase;
+  @apply transition-transform;
+  @apply duration-500;
+  @apply ease-in-out;
+}
+
+nav ul {
+  @apply mt-32
+}
+
+.nav__item {
+  @apply text-black;
+  @apply py-3;
+  @apply px-8;
+  @apply block;
+  @apply w-full;
+  @apply text-2xl;
+}
+
+.nav__item:hover {
+  @apply bg-gray-200;
+}
+
+.hero-img {
+  @apply absolute;
+  @apply top-0;
+  @apply left-0;
+  @apply w-full;
+  @apply h-screen;
+  background: url("/assets/images/mental-health.svg");
+  background-size: cover;
+  background-position-x: 20%;
+  background-position-y: 20%;
+  z-index: -2;
+  animation: introLoad 2s forwards;
+  /* overflow: hidden; */
+}
+
+.hero-card {
+  @apply absolute;
+  @apply top-0;
+  @apply left-0;
+  @apply w-full;
+  @apply h-screen;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: -1;
+}
+
+.logo {
+  @apply text-2xl;
+  @apply font-bold;
+  @apply text-white;
+}
+
+section.hero {
+  @apply text-white;
+  @apply opacity-0;
+  height: 90vh;
+  animation: moveDown 1s ease-in-out forwards;
+}
+
+section.hero .title {
+  @apply w-3/4;
+}
+
+/* down arrow */
+section.hero svg {
+  @apply absolute;
+  @apply bottom-32;
+  @apply w-4;
+  @apply stroke-white;
+  animation: moveArrow 1s alternate-reverse infinite;
+}
+
+section.hero > svg > path {
+  @apply fill-white;
+}
+
+.feature img {
+  @apply w-full;
+  @apply object-cover;
+  @apply h-44;
+}
+
+.feature .title {
+  @apply text-xl;
+  @apply font-bold;
+}
+
+.feature .description {
+  @apply leading-6;
+}
+
+.open-nav {
+  @apply translate-x-0
+} 
+
+@media only screen and (min-width: 680px) {
+  body {
+    margin: 1.5em 5em;
+  }
+}
+
+@media only screen and (min-width: 920px) {
+  .menu {
+    @apply hidden;
+  }
+
+  nav {
+    @apply translate-x-0;
+    @apply block;
+    @apply w-auto;
+    @apply h-auto;
+    @apply bg-transparent;
+    position: unset;
+  }
+
+  nav svg {
+    @apply hidden;
+  }
+
+  nav ul {
+    @apply flex;
+    @apply m-0;
+  }
+
+  .nav__item {
+    @apply text-white;
+    @apply text-lg;
+    padding: .5em 1.5em;
+  }
+
+  .nav__item:hover {
+    @apply bg-transparent;
+    @apply underline
+  }
+
+  .hero-img {
+    @apply w-1/2;
+    @apply right-0;
+    left: unset;
+    height: 42em;
+  }
+
+  .hero-card {
+    @apply hidden
+  }
+
+  .logo {
+    @apply text-black;
+  }
+
+  section.hero {
+    @apply text-black;
+    @apply h-auto;
+    @apply w-2/5;
+    @apply mb-32;
+  }
+
+  section.hero svg {
+    @apply stroke-black;
+    @apply mt-20;
+    position: unset;
+  }
+
+  section.hero svg path {
+    @apply fill-black;
+  }
+
+  .feature {
+    @apply grid;
+    @apply grid-cols-2;
+    @apply gap-12;
+    @apply mb-32;
+  }
+
+  .feature img {
+    @apply w-96;
+  }
+
+  .feature .content {
+    @apply w-96;
+    @apply text-right;
+  }
+
+  .feature.flip {
+    grid-template-areas: 'left right';
+  }
+
+  .feature.flip img {
+    grid-area: left;
+  }
+
+  .feature.flip .content {
+    @apply text-left;
+    @apply w-96;
+  }
+
+}
+
+@media only screen and (min-width: 1280px){
+  .wrapper {
+    @apply max-w-screen-xl;
+    @apply mx-auto;
+  }
+
+  .feature {
+    @apply gap-0;
+  }
+
+  .hero-img {
+    background-position: center;
+  }
+}
+
+@keyframes introLoad {
+  from {
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  }
+  to {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+@keyframes moveArrow {
+  from {
+    transform: translateY(-20px);
+  }
+  to {
+    transform: translateY(0x);
+  }
+}
+
+@keyframes moveDown {
+  from {
+    transform: translateY(-100px);
+  }
+  to {
+    @apply opacity-100;
+    transform: translateY(0x);
+  }
 }
