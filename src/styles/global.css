@@ -37,25 +37,27 @@ body {
 
 
 .top-flex-item:nth-child(1) {
+  align-self: auto;
+  border-radius: 0.3em;
   display: block;
+  flex-basis: auto;
   flex-grow: 0;
   flex-shrink: 1;
-  flex-basis: auto;
-  align-self: auto;
   order: 0;
-  background-color: #FFFFFF;
-  border-radius: 0.3em;
+  justify-content: space-around;
+
 }
 
 .top-flex-item:nth-child(2) {
+  align-self: auto;
+  border-radius: 0.3em;
   display: block;
+  flex-basis: auto;
   flex-grow: 0;
   flex-shrink: 1;
-  flex-basis: auto;
-  align-self: auto;
   order: 0;
-  background-color: #FFFFFF;
-  border-radius: 0.3em;
+  justify-content: space-around;
+
 }
 
 .top-flex-item:nth-child(3) {
@@ -65,8 +67,9 @@ body {
   flex-basis: auto;
   align-self: auto;
   order: 0;
-  background-color: #FFFFFF;
   border-radius: 0.3em;
+  justify-content: space-around;
+
 }
 
 .right-flex-container {
@@ -86,8 +89,10 @@ body {
   flex-basis: auto;
   align-self: auto;
   order: 0;
-  background-color: #FFFFFF;
+
   border-radius: 0.3em;
+  justify-content: space-around;
+
 }
 
 .right-flex-item:nth-child(2) {
@@ -96,8 +101,10 @@ body {
   flex-basis: auto;
   align-self: auto;
   order: 0;
-  background-color: #FFFFFF;
+
   border-radius: 0.3em;
+  justify-content: space-around;
+
 }
 
 .bottom-flex-container {
@@ -117,9 +124,11 @@ border-radius: 0.3em;
   flex-basis: auto;
   align-self: auto;
   order: 0;
-  background-color: #FFFFFF;
+  
   border-radius: 0.3em;
   padding:  1em;
+  justify-content: space-around;
+
 }
 
 
