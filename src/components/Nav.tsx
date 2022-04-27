@@ -46,6 +46,11 @@ const Nav = (props: IMainProps) => {
               <a className="nav__item">Register</a>
             </Link>
           </li>
+          <li>
+            <Link href="/dashboard">
+              <a className="nav__item">Dashboard</a>
+            </Link>
+          </li>
         </ul>
       </nav>
       <svg
