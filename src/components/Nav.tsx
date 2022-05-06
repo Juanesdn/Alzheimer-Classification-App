@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { useState } from 'react';
 
+import { useFetchUser } from '@/utils/user';
+
 type IMainProps = {
   logo: string;
   title: string;
@@ -8,7 +10,7 @@ type IMainProps = {
 
 const Nav = (props: IMainProps) => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const { user, loading } = useFetchUser();
   return (
     <header className="navigation flex justify-between">
       <Link href="/">
@@ -47,10 +49,17 @@ const Nav = (props: IMainProps) => {
             </Link>
           </li>
           <li>
-            <Link href="/login">
-              <a className="nav__item">Iniciar Sesión</a>
-            </Link>
+            {user && !loading ? (
+              <Link href="/api/logout">
+                <a className="nav__item">Finalizar Sesión</a>
+              </Link>
+            ) : (
+              <Link href="/api/login">
+                <a className="nav__item">Iniciar Sesión</a>
+              </Link>
+            )}
           </li>
+          ,
           <li>
             <Link href="/dashboard">
               <a className="nav__item">Dashboard</a>
