@@ -1,0 +1,60 @@
+.dashboard {
+  @apply flex flex-col;
+}
+
+.dashboard__cardsContainer {
+  @apply w-full h-3/5;
+  @apply mt-8;
+  @apply px-10;
+  @apply grid;
+  grid:
+    "clasificar consejos historial" 1fr
+    "last-scan last-scan mri" 1fr
+    "last-scan last-scan ayuda" 1fr
+    / 1fr 1fr 1fr;
+  gap: 32px;
+}
+
+.dashboard__appbar {
+  @apply flex justify-between;
+  @apply text-4xl;
+  @apply font-bold;
+  @apply mb-10 mx-8;
+  @apply pt-8;
+}
+
+.lastScan {
+  @apply w-full h-full;
+  @apply flex justify-between;
+  @apply mx-8;
+  @apply py-8;
+}
+
+.lastScan__image {
+  @apply rounded-xl;
+  @apply overflow-hidden;
+  @apply relative;
+  @apply w-1/2 h-full;
+}
+
+.lastScan__info__title {
+  @apply text-3xl;
+  @apply font-bold;
+  @apply mb-2;
+}
+
+.lastScan__info__date {
+  @apply text-sm;
+  @apply font-bold;
+  @apply mb-2;
+}
+
+.lastScan__info__descripcion {
+  @apply text-lg;
+  @apply font-bold;
+  @apply mb-2;
+}
+
+.lastScan__info__descripcion>span {
+  @apply text-sky-700;
+}

@@ -1,5 +1,6 @@
-import Link from 'next/link';
 import { useState } from 'react';
+
+import Link from '../Link/Link';
 
 type IMainProps = {
   logo: string;
@@ -10,12 +11,9 @@ const Nav = (props: IMainProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="navigation flex justify-between">
-      <Link href="/">
-        <a className="logo">
-          {/* <img src={props.logo} alt="logo" className="h-20 w-20" /> */}
-          {props.title}
-        </a>
+    <header className="flex justify-between">
+      <Link className="logo" href="/">
+        {props.title}
       </Link>
       <nav className={`${isOpen && 'open-nav'}`}>
         <svg
@@ -32,28 +30,28 @@ const Nav = (props: IMainProps) => {
         </svg>
         <ul className="list-none p-0">
           <li className="">
-            <Link href="/">
-              <a className="nav__item">Inicio</a>
+            <Link className="nav__item" href="/">
+              Inicio
             </Link>
           </li>
           <li>
-            <Link href="/about">
-              <a className="nav__item">Sobre Nosotros</a>
+            <Link className="nav__item" href="/about">
+              Sobre Nosotros
             </Link>
           </li>
           <li>
-            <Link href="/signup">
-              <a className="nav__item">Registro</a>
+            <Link className="nav__item" href="/signup">
+              Registro
             </Link>
           </li>
           <li>
-            <Link href="/login">
-              <a className="nav__item">Iniciar Sesión</a>
+            <Link className="nav__item" href="/login">
+              Iniciar Sesión
             </Link>
           </li>
           <li>
-            <Link href="/dashboard">
-              <a className="nav__item">Dashboard</a>
+            <Link className="nav__item" href="/dashboard">
+              Dashboard
             </Link>
           </li>
         </ul>
