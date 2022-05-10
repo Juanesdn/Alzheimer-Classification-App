@@ -20,7 +20,7 @@
   @apply text-4xl;
   @apply font-bold;
   @apply mb-10 mx-8;
-  @apply pt-8;
+  @apply pt-14;
 }
 
 .lastScan {
@@ -57,4 +57,16 @@
 
 .lastScan__info__descripcion>span {
   @apply text-sky-700;
+}
+
+@media screen and (max-width: 1200px) {
+  .dashboard {
+    @apply justify-start;
+    @apply mt-8;
+    overflow-y: scroll;
+  }
+  .dashboard__cardsContainer {
+    @apply flex flex-col;
+    @apply mt-0;
+  }
 }

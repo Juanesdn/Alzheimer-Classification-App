@@ -13,3 +13,9 @@
   width: 95%;
   grid-template-columns: 11rem auto;
 }
+
+@media screen and (max-width: 1200px) {
+  .dashboard__container {
+    grid-template-columns: 10% auto;
+  }
+}

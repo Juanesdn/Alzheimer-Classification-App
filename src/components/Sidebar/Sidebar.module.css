@@ -68,3 +68,19 @@
   @apply w-full;
 }
 
+@media screen and (max-width: 1200px) {
+  .sidebar__menu_item>span {
+    @apply hidden;
+  }
+
+  .sidebar__logo {
+    @apply hidden;
+  }
+
+  .sidebar__menu_item__active {
+    @apply ml-0;
+    @apply bg-cyan-100;
+    margin-right: calc(1rem - 40px);
+  }
+}
+

@@ -44,15 +44,15 @@ export const MainDashboard = () => {
       </div>
 
       <div className={styles.dashboard__cardsContainer}>
-        {CardsData.map((card) => (
-          <Card key={card.id} {...card} />
-        ))}
         <Card
           icon={<LastScan />}
           link={'/card'}
           className="last-scan"
           title=""
         />
+        {CardsData.map((card) => (
+          <Card key={card.id} {...card} />
+        ))}
       </div>
     </div>
   );
