@@ -15,7 +15,7 @@ import { createTheme } from '@mui/material/styles';
 import Link from 'next/link';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
-import FormInput from '@/components/FormInput';
+import FormInput from '@/components/FormInput/FormInput';
 
 interface IFormValues {
   'Full Name': string;

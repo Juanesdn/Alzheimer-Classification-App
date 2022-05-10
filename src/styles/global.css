@@ -1,6 +1,10 @@
+@tailwind base;
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Mulish", sans-serif;
+}
+
+.landing__container {
   margin: 1.5em;
 }
 
@@ -8,19 +12,18 @@ body {
 
 @tailwind utilities;
 
-nav a {
+a {
   text-decoration: none;
   @apply text-sm;
 }
 
-h1 {
+.header__title {
   @apply text-5xl;
+  @apply font-bold;
   line-height: 3.3rem;
   margin-top: 2em;
-  @apply font-bold;
 }
 
-/* Navigation */
 nav {
   @apply fixed;
   @apply right-0;
@@ -37,7 +40,7 @@ nav {
 }
 
 nav ul {
-  @apply mt-32
+  @apply mt-32;
 }
 
 .nav__item {
@@ -47,13 +50,12 @@ nav ul {
   @apply block;
   @apply w-full;
   @apply text-2xl;
+  text-decoration: none;
 }
 
 .nav__item:hover {
   @apply bg-gray-200;
 }
-
-/* Main Section */
 
 .hero-img {
   @apply absolute;
@@ -126,11 +128,11 @@ section.hero > svg > path {
 }
 
 .open-nav {
-  @apply translate-x-0
-} 
+  @apply translate-x-0;
+}
 
 @media only screen and (min-width: 680px) {
-  body {
+  .landing__container {
     margin: 1.5em 5em;
   }
 }
@@ -161,12 +163,12 @@ section.hero > svg > path {
   .nav__item {
     @apply text-white;
     @apply text-lg;
-    padding: .5em 1.5em;
+    padding: 0.5em 1.5em;
   }
 
   .nav__item:hover {
     @apply bg-transparent;
-    @apply underline
+    @apply underline;
   }
 
   .hero-img {
@@ -177,7 +179,7 @@ section.hero > svg > path {
   }
 
   .hero-card {
-    @apply hidden
+    @apply hidden;
   }
 
   .logo {
@@ -218,7 +220,7 @@ section.hero > svg > path {
   }
 
   .feature.flip {
-    grid-template-areas: 'left right';
+    grid-template-areas: "left right";
   }
 
   .feature.flip img {
@@ -229,10 +231,9 @@ section.hero > svg > path {
     @apply text-left;
     @apply w-96;
   }
-
 }
 
-@media only screen and (min-width: 1280px){
+@media only screen and (min-width: 1280px) {
   .wrapper {
     @apply max-w-screen-xl;
     @apply mx-auto;
@@ -244,11 +245,6 @@ section.hero > svg > path {
 
   .hero-img {
     background-position: center;
-  }
-
-  .navigation {
-    @apply max-w-screen-xl;
-    @apply mx-auto;
   }
 }
 
@@ -280,9 +276,47 @@ section.hero > svg > path {
   }
 }
 
+/* Grid area para el dashboard */
+.clasificar {
+  grid-area: clasificar;
+}
+.consejos {
+  grid-area: consejos;
+}
+.historial {
+  grid-area: historial;
+}
+.last-scan {
+  grid-area: last-scan;
+}
+.mri {
+  @apply flex flex-col;
+  grid-area: mri;
+}
+.ayuda {
+  @apply flex flex-col;
+  grid-area: ayuda;
+}
 
-.btn__close {
-  @apply absolute;
-  @apply top-5;
-  @apply left-5;
+@media screen and (max-width: 1200px) {
+  .clasificar {
+    @apply flex flex-col;
+    @apply py-4
+  }
+  .consejos {
+    @apply flex flex-col;
+    @apply py-4
+  }
+  .historial {
+    @apply flex flex-col;
+    @apply py-4
+  }
+  .mri {
+    @apply flex flex-col;
+    @apply py-4
+  }
+  .ayuda {
+    @apply flex flex-col;
+    @apply py-4
+  }
 }

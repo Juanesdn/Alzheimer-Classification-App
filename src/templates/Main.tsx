@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import Nav from '@/components/Nav';
+import Nav from '@/components/Nav/Nav';
 import { AppConfig } from '@/utils/AppConfig';
 
 type IMainProps = {

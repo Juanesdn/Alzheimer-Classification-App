@@ -1,0 +1,21 @@
+.dashboard__background {
+  @apply bg-gradient-to-r from-cyan-500 to-blue-500;
+  @apply w-full h-screen;
+  @apply flex items-center justify-center;
+}
+
+.dashboard__container {
+  @apply grid;
+  @apply backdrop-blur-xl bg-white/30;
+  @apply overflow-hidden;
+  border-radius: 2rem;
+  height: 95%;
+  width: 95%;
+  grid-template-columns: 11rem auto;
+}
+
+@media screen and (max-width: 1200px) {
+  .dashboard__container {
+    grid-template-columns: 10% auto;
+  }
+}
