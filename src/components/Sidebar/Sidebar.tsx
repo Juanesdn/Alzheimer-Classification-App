@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useRouter } from 'next/router';
+import { signOut } from 'next-auth/react';
+import { useEffect, useState } from 'react';
 import { RiLogoutCircleRLine } from 'react-icons/ri';
 
 import { SidebarData } from '@/data/Data';
@@ -8,6 +10,17 @@ import styles from './Sidebar.module.css';
 
 const Sidebar = () => {
   const [selected, setSelected] = useState(0);
+  const router = useRouter();
+
+  const getSelectedItem = () => {
+    const path = router.pathname;
+    const selectedItem = SidebarData.find((item) => item.link === path);
+    setSelected(selectedItem?.id ?? 0);
+  };
+
+  useEffect(() => {
+    getSelectedItem();
+  }, [router.pathname]);
 
   return (
     <div className={styles.sidebar}>
@@ -26,13 +39,23 @@ const Sidebar = () => {
               selected === item.id && styles.sidebar__menu_item__active
             }`}
             key={item.id}
-            onClick={() => setSelected(item.id)}
+            onClick={() => {
+              router.push(item.link);
+              setSelected(item.id);
+            }}
           >
             {item.icon}
             <span>{item.title}</span>
           </div>
         ))}
-        <div className={styles.sidebar__menu_item}>
+        <div
+          onClick={() =>
+            signOut({
+              callbackUrl: `${window.location.origin}`,
+            })
+          }
+          className={styles.sidebar__menu_item__logout}
+        >
           <RiLogoutCircleRLine />
         </div>
       </div>

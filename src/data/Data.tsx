@@ -23,25 +23,25 @@ export const SidebarData = [
     id: 2,
     title: 'Clasificar',
     icon: <BiSearch />,
-    link: '/card',
+    link: '/dashboard/classify',
   },
   {
     id: 3,
     icon: <BiClipboard />,
     title: 'Historial',
-    link: '/historial',
+    link: '/dashboard/history',
   },
   {
     id: 4,
     title: 'Consejos',
     icon: <BiUser />,
-    link: '/card',
+    link: '/dashboard/tips',
   },
   {
     id: 5,
     title: 'Ayuda',
     icon: <AiOutlineQuestionCircle />,
-    link: '/card',
+    link: '/dashboard/help',
   },
 ];
 
@@ -54,21 +54,21 @@ export const CardsData = [
     id: 1,
     title: 'CLASIFICAR',
     icon: <BiSearch />,
-    link: '/card',
+    link: '/dashboard/classify',
     className: 'clasificar',
   },
   {
     id: 2,
     title: 'CONSEJOS',
     icon: <BiUser />,
-    link: '/card',
+    link: '/dashboard/tips',
     className: 'consejos',
   },
   {
     id: 3,
     title: 'HISTORIAL',
     icon: <VscGraphLine />,
-    link: '/card',
+    link: '/dashboard/history',
     className: 'historial',
   },
   {
@@ -82,7 +82,7 @@ export const CardsData = [
     id: 5,
     title: 'NECESITAS AYUDA?',
     icon: <AiOutlineQuestionCircle />,
-    link: '/card',
+    link: '/dashboard/help',
     className: 'ayuda',
   },
 ];
