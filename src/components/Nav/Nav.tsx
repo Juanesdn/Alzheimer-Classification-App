@@ -15,7 +15,7 @@ const Nav = (props: IMainProps) => {
       <Link className="logo" href="/">
         {props.title}
       </Link>
-      <nav className={`${isOpen && 'open-nav'}`}>
+      <nav className={`${isOpen ? 'open-nav' : ''}`}>
         <svg
           onClick={() => setIsOpen(!isOpen)}
           className="float-right m-8 w-10 cursor-pointer"
@@ -40,18 +40,8 @@ const Nav = (props: IMainProps) => {
             </Link>
           </li>
           <li>
-            <Link className="nav__item" href="/signup">
-              Registro
-            </Link>
-          </li>
-          <li>
             <Link className="nav__item" href="/login">
               Iniciar Sesión
-            </Link>
-          </li>
-          <li>
-            <Link className="nav__item" href="/dashboard">
-              Dashboard
             </Link>
           </li>
         </ul>

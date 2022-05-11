@@ -1,3 +1,5 @@
+import { useRouter } from 'next/router';
+
 import styles from './Card.module.css';
 
 interface IMainProps {
@@ -8,8 +10,12 @@ interface IMainProps {
 }
 
 export const Card = (props: IMainProps) => {
+  const router = useRouter();
   return (
-    <div className={`${props.className} ${styles.card}`}>
+    <div
+      className={`${props.className} ${styles.card}`}
+      onClick={() => router.push(props.link)}
+    >
       {props.icon}
       {props.title}
     </div>

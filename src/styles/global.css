@@ -12,9 +12,25 @@ body {
 
 @tailwind utilities;
 
+button {
+  background-color: none;
+}
+
 a {
   text-decoration: none;
   @apply text-sm;
+}
+
+button {
+  @apply bg-gray-300;
+  @apply hover:bg-gray-400;
+  @apply text-gray-800;
+  @apply font-bold;
+  @apply py-2;
+  @apply px-4;
+  @apply rounded;
+  @apply inline-flex;
+  @apply items-center;
 }
 
 .header__title {
@@ -31,12 +47,13 @@ nav {
   @apply z-50;
   @apply h-screen;
   @apply w-1/2;
-  @apply translate-x-full;
+  
   @apply bg-white;
   @apply uppercase;
   @apply transition-transform;
   @apply duration-500;
   @apply ease-in-out;
+  transform: translateX(100%);
 }
 
 nav ul {
