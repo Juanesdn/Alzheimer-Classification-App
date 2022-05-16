@@ -1,6 +1,3 @@
-.dashboard {
-  @apply flex flex-col;
-}
 
 .dashboard__cardsContainer {
   @apply w-full h-3/5;
@@ -15,13 +12,6 @@
   gap: 32px;
 }
 
-.dashboard__appbar {
-  @apply flex justify-between;
-  @apply text-4xl;
-  @apply font-bold;
-  @apply mb-10 mx-8;
-  @apply pt-14;
-}
 
 .lastScan {
   @apply w-full h-full;

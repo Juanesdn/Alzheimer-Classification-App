@@ -1,0 +1,7 @@
+.classify {
+  @apply flex flex-col items-center justify-center;
+  @apply w-11/12;
+  @apply bg-white/60;
+  @apply rounded-xl;
+  @apply p-5 mx-10;
+}

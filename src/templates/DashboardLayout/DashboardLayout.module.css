@@ -1,3 +1,8 @@
+.dashboard {
+  @apply flex flex-col;
+}
+
+
 .dashboard__background {
   @apply bg-gradient-to-r from-cyan-500 to-blue-500;
   @apply w-full h-screen;
@@ -13,6 +18,7 @@
   width: 95%;
   grid-template-columns: 11rem auto;
 }
+
 
 @media screen and (max-width: 1200px) {
   .dashboard__container {

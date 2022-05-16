@@ -29,7 +29,7 @@ const Nav = (props: IMainProps) => {
           />
         </svg>
         <ul className="list-none p-0">
-          <li className="">
+          {/* <li className="">
             <Link className="nav__item" href="/">
               Inicio
             </Link>
@@ -38,7 +38,7 @@ const Nav = (props: IMainProps) => {
             <Link className="nav__item" href="/about">
               Sobre Nosotros
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link className="nav__item" href="/login">
               Iniciar Sesión
