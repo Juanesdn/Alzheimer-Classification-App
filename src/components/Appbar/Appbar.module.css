@@ -1,0 +1,24 @@
+
+.dashboard__appbar {
+  @apply flex justify-between;
+  @apply text-4xl;
+  @apply font-bold;
+  @apply mb-10 mx-8;
+  @apply pt-14;
+}
+
+.dashboard__appbar__user {
+  @apply flex;
+  @apply items-center;
+  @apply mr-2;
+}
+
+.dashboard__appbar__user p {
+  @apply text-lg;
+  @apply mr-3
+}
+
+.dashboard__appbar__user p span {
+  @apply font-normal;
+
+}

@@ -1,9 +1,9 @@
-import { Avatar } from '@mui/material';
 import Image from 'next/image';
 
 import { CardsData } from '@/data/Data';
 import MRIPlaceholder from '@/public/assets/images/mri-placeholder.jpeg';
 
+import Appbar from '../Appbar/Appbar';
 import { Card } from '../Card/Card';
 import styles from './MainDashboard.module.css';
 
@@ -37,12 +37,8 @@ const LastScan = () => {
 
 export const MainDashboard = () => {
   return (
-    <div className={styles.dashboard}>
-      <div className={styles.dashboard__appbar}>
-        <h1>Dashboard</h1>
-        <Avatar />
-      </div>
-
+    <>
+      <Appbar title="Dashboard" />
       <div className={styles.dashboard__cardsContainer}>
         <Card
           icon={<LastScan />}
@@ -54,6 +50,6 @@ export const MainDashboard = () => {
           <Card key={card.id} {...card} />
         ))}
       </div>
-    </div>
+    </>
   );
 };

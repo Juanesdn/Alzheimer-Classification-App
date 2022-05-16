@@ -1,8 +1,14 @@
+import Appbar from '@/components/Appbar/Appbar';
+import Table from '@/components/Table/Table';
+
 const History = () => {
   return (
-    <div>
-      <h1>History</h1>
-    </div>
+    <>
+      <Appbar title="Historial" />
+      <div className="flex w-full flex-col items-center justify-center ">
+        <Table />
+      </div>
+    </>
   );
 };
 

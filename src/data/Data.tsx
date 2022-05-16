@@ -86,3 +86,30 @@ export const CardsData = [
     className: 'ayuda',
   },
 ];
+
+export const tipsData = [
+  {
+    id: 1,
+    title: 'Noteworthy technology acquisitions 2021',
+    description:
+      'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.',
+  },
+  {
+    id: 2,
+    title: 'Noteworthy technology acquisitions 2021',
+    description:
+      'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.',
+  },
+  {
+    id: 3,
+    title: 'Noteworthy technology acquisitions 2021',
+    description:
+      'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.',
+  },
+  {
+    id: 4,
+    title: 'Noteworthy technology acquisitions 2021',
+    description:
+      'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.',
+  },
+];

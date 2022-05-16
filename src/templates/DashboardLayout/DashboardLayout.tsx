@@ -36,7 +36,7 @@ const DashboardLayout = (props: IMainProps) => {
     <div className={styles.dashboard__background}>
       <div className={styles.dashboard__container}>
         <Sidebar />
-        {props.children}
+        <div className={styles.dashboard}>{props.children}</div>
       </div>
     </div>
   );
