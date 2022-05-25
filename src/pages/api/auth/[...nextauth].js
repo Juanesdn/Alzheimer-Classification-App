@@ -65,16 +65,17 @@ export default NextAuth({
     strategy: 'jwt',
   },
   callbacks: {
-    async jwt({ token, user }) {
-      if (user) {
-        token.id = user.data.user.id;
-        token.name = user.data.user.name;
-        token.email = user.data.user.email;
-        token.picture = user.data.user.picture;
-        token.accessToken = user.data.tokens.access.token;
-        token.refreshToken = user.data.tokens.refresh.token;
+    async jwt({ token, user, account }) {
+      if (account && account.provider === 'credentials') {
+        if (user) {
+          token.id = user.data.user.id;
+          token.name = user.data.user.name;
+          token.email = user.data.user.email;
+          token.picture = user.data.user.picture;
+          token.accessToken = user.data.tokens.access.token;
+          token.refreshToken = user.data.tokens.refresh.token;
+        }
       }
-
       return token;
     },
     async session({ session, token }) {

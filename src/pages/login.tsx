@@ -223,11 +223,12 @@ const SignIn = (props: IMainProps) => {
                   <button
                     key={provider.name}
                     className="flex w-full items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm text-gray-700 hover:border-gray-500 focus:border-gray-500"
-                    onClick={() =>
+                    onClick={(evt) => {
+                      evt.preventDefault();
                       signIn(provider.id, {
                         callbackUrl: `${window.location.origin}/dashboard`,
-                      })
-                    }
+                      });
+                    }}
                   >
                     <FcGoogle className="mr-2 h-6 w-6" />
                     <span>Iniciar sesión con {provider.name}</span>

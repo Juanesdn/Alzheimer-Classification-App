@@ -63,10 +63,18 @@ export const MainDashboard = () => {
       <Appbar title="Dashboard" />
       <div className={styles.dashboard__cardsContainer}>
         <Card
-          icon={lastScan ? <LastScan lastScan={lastScan} /> : <FaInfoCircle />}
+          icon={
+            lastScan && lastScan.code !== 401 ? (
+              <LastScan lastScan={lastScan} />
+            ) : (
+              <FaInfoCircle />
+            )
+          }
           link={'/card'}
           className="last-scan"
-          title={!lastScan ? 'No hay último registro' : ''}
+          title={
+            lastScan && lastScan.code === 401 ? 'No hay último registro' : ''
+          }
         />
         {CardsData.map((card) => (
           <Card key={card.id} {...card} />

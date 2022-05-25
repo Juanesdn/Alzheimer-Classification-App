@@ -20,6 +20,8 @@ export type UserResponse = {
 };
 
 export type MRIResponse = {
+  code?: number;
+  message?: string;
   mri: {
     image: string;
     classification: string;
