@@ -22,3 +22,9 @@
   @apply font-normal;
 
 }
+
+@media (max-width: 768px) {
+  .dashboard__appbar__user p {
+    @apply hidden;
+  }
+}

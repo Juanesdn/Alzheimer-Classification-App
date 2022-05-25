@@ -1,7 +1,7 @@
 .dashboard {
   @apply flex flex-col;
+  @apply h-screen
 }
-
 
 .dashboard__background {
   @apply bg-gradient-to-r from-cyan-500 to-blue-500;
@@ -23,5 +23,10 @@
 @media screen and (max-width: 1200px) {
   .dashboard__container {
     grid-template-columns: 10% auto;
+  }
+  .dashboard {
+    @apply justify-start;
+    @apply mt-8;
+    overflow-y: scroll;
   }
 }

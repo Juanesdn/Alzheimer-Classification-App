@@ -1,50 +1,72 @@
-import Image from 'next/image';
+import moment from 'moment';
+import { getSession } from 'next-auth/react';
+import { useEffect, useState } from 'react';
+import { FaInfoCircle } from 'react-icons/fa';
 
+import { getLastMRI } from '@/data/api';
 import { CardsData } from '@/data/Data';
-import MRIPlaceholder from '@/public/assets/images/mri-placeholder.jpeg';
+import { MRIResponse, SessionProps } from '@/types';
 
 import Appbar from '../Appbar/Appbar';
 import { Card } from '../Card/Card';
 import styles from './MainDashboard.module.css';
 
-const LastScan = () => {
+type LastScanProps = {
+  lastScan: MRIResponse;
+};
+
+const LastScan = ({ lastScan }: LastScanProps) => {
   return (
     <div className={styles.lastScan}>
       <div className={styles.lastScan__info}>
         <div className={styles.lastScan__info__title}>Último registro</div>
-        <div className={styles.lastScan__info__date}>25/3/2022</div>
-        <div className={styles.lastScan__info__descripcion}>
-          Clasificación: <span>Moderado</span>
+        <div className={styles.lastScan__info__date}>
+          {moment(lastScan.createdAt).format('DD/MM/YYYY')}
         </div>
         <div className={styles.lastScan__info__descripcion}>
-          Edad: <span>35 años</span>
+          Clasificación: <span>{lastScan.mri.classification}</span>
         </div>
         <div className={styles.lastScan__info__descripcion}>
-          Género: <span>Masculino</span>
+          Edad: <span>{lastScan.mri.age} años</span>
+        </div>
+        <div className={styles.lastScan__info__descripcion}>
+          Género: <span>{lastScan.mri.genre}</span>
         </div>
       </div>
-      <div className={styles.lastScan__image}>
-        <Image
-          src={MRIPlaceholder}
-          alt="lastScan"
-          layout="fill" // required
-          objectFit="cover" // change to suit your needs
-        />
-      </div>
+      <img className={styles.lastScan__image} src={lastScan.mri.image} alt="" />
     </div>
   );
 };
 
 export const MainDashboard = () => {
+  const [lastScan, setLastScan] = useState<MRIResponse | null>(null);
+
+  const getLastScan = async () => {
+    const session = await getSession();
+    if (!session) {
+      return;
+    }
+    const {
+      accessToken,
+      user: { userId },
+    } = session as unknown as SessionProps;
+    const response = await getLastMRI(accessToken as string, userId as string);
+    setLastScan(response);
+  };
+
+  useEffect(() => {
+    getLastScan();
+  }, []);
+
   return (
     <>
       <Appbar title="Dashboard" />
       <div className={styles.dashboard__cardsContainer}>
         <Card
-          icon={<LastScan />}
+          icon={lastScan ? <LastScan lastScan={lastScan} /> : <FaInfoCircle />}
           link={'/card'}
           className="last-scan"
-          title=""
+          title={!lastScan ? 'No hay último registro' : ''}
         />
         {CardsData.map((card) => (
           <Card key={card.id} {...card} />

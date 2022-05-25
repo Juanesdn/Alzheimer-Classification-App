@@ -12,7 +12,7 @@ const Nav = (props: IMainProps) => {
 
   return (
     <header className="flex justify-between">
-      <Link className="logo" href="/">
+      <Link className="logo" href="/" style={{ textDecoration: 'none' }}>
         {props.title}
       </Link>
       <nav className={`${isOpen ? 'open-nav' : ''}`}>
@@ -40,7 +40,20 @@ const Nav = (props: IMainProps) => {
             </Link>
           </li> */}
           <li>
-            <Link className="nav__item" href="/login">
+            <Link
+              className="nav__item"
+              href="/register"
+              style={{ textDecoration: 'none' }}
+            >
+              Registrarse
+            </Link>
+          </li>
+          <li>
+            <Link
+              className="nav__item"
+              href="/login"
+              style={{ textDecoration: 'none' }}
+            >
               Iniciar Sesión
             </Link>
           </li>

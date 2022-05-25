@@ -1,3 +1,4 @@
+import { Tooltip } from '@mui/material';
 import { useRouter } from 'next/router';
 import { signOut } from 'next-auth/react';
 import { useEffect, useState } from 'react';
@@ -48,16 +49,18 @@ const Sidebar = () => {
             <span>{item.title}</span>
           </div>
         ))}
-        <div
-          onClick={() =>
-            signOut({
-              callbackUrl: `${window.location.origin}`,
-            })
-          }
-          className={styles.sidebar__menu_item__logout}
-        >
-          <RiLogoutCircleRLine />
-        </div>
+        <Tooltip title="Cerrar Sesión">
+          <div
+            onClick={() =>
+              signOut({
+                callbackUrl: `${window.location.origin}`,
+              })
+            }
+            className={styles.sidebar__menu_item__logout}
+          >
+            <RiLogoutCircleRLine />
+          </div>
+        </Tooltip>
       </div>
     </div>
   );

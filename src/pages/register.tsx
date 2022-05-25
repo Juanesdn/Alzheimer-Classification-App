@@ -11,66 +11,48 @@ import {
   Typography,
 } from '@mui/material';
 import { useRouter } from 'next/router';
-import { BuiltInProviderType } from 'next-auth/providers';
-import {
-  ClientSafeProvider,
-  getProviders,
-  LiteralUnion,
-  signIn,
-} from 'next-auth/react';
-import { useEffect, useState } from 'react';
+import { useSnackbar } from 'notistack';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
-import { FcGoogle } from 'react-icons/fc';
 
 import Link from '@/components/Link/Link';
-
-interface IMainProps {
-  providers: Record<
-    LiteralUnion<BuiltInProviderType, string>,
-    ClientSafeProvider
-  >;
-}
+import { signUpUser } from '@/data/api';
+import { UserResponse } from '@/types';
 
 type Inputs = {
-  email: string | string[];
+  email: string;
+  name: string;
   password: string;
 };
 
-const SignIn = (props: IMainProps) => {
+const SignUp = () => {
   const { handleSubmit, reset, control } = useForm<Inputs>({
     defaultValues: {
       email: '',
+      name: '',
       password: '',
     },
   });
-  const [loginError, setLoginError] = useState<string | string[]>('');
+  const { enqueueSnackbar } = useSnackbar();
   const router = useRouter();
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    const { email, password } = data;
-    signIn('credentials', {
-      email,
-      password,
-      callbackUrl: `${window.location.origin}/dashboard`,
-    });
-    /* .then((error: any) => {
-      if (error.error) {
-        enqueueSnackbar(error.error, {
+    await signUpUser(data).then((res: UserResponse) => {
+      if (res.code === 400) {
+        enqueueSnackbar(res.message, {
           variant: 'error',
           autoHideDuration: 3000,
         });
       }
-    }); */
+      if (res.user) {
+        enqueueSnackbar('Cuenta creada con exito', {
+          variant: 'success',
+          autoHideDuration: 3000,
+        });
+        router.push('/login');
+      }
+    });
     reset();
   };
-
-  useEffect(() => {
-    // Getting the error details from URL
-    if (router.query.error) {
-      setLoginError(router.query.error);
-      reset({ email: router.query.email, password: '' }); // Reset the form
-    }
-  }, [router]);
 
   return (
     <Grid container component="main" sx={{ height: '100vh' }}>
@@ -131,13 +113,36 @@ const SignIn = (props: IMainProps) => {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Iniciar Sesión
+            Registro
           </Typography>
           <Box
             className="flex flex-col items-center justify-center"
             component="form"
             sx={{ mt: 1, width: '100%' }}
           >
+            <Controller
+              name={'name'}
+              control={control}
+              rules={{
+                required: { value: true, message: 'Este campo es requerido' },
+              }}
+              render={({
+                field: { onChange, value },
+                fieldState: { error },
+              }) => (
+                <TextField
+                  onChange={onChange}
+                  label="Nombre"
+                  value={value}
+                  margin="normal"
+                  fullWidth
+                  id="name"
+                  name="name"
+                  error={!!error}
+                  helperText={error ? error.message : ''}
+                />
+              )}
+            />
             <Controller
               name={'email'}
               control={control}
@@ -158,10 +163,10 @@ const SignIn = (props: IMainProps) => {
                   value={value}
                   margin="normal"
                   fullWidth
-                  id="name"
-                  name="name"
-                  error={!!error || !!loginError}
-                  helperText={error ? error.message : loginError}
+                  id="email"
+                  name="email"
+                  error={!!error}
+                  helperText={error ? error.message : ''}
                 />
               )}
             />
@@ -199,42 +204,12 @@ const SignIn = (props: IMainProps) => {
               )}
             />
             <button
-              className="flex w-full items-center justify-center rounded-lg bg-indigo-500 px-4 py-2 text-sm text-white hover:border-indigo-700 hover:bg-indigo-700 focus:border-indigo-700"
-              /* onClick={() =>
-                signIn('email', {
-                  callbackUrl: `${window.location.origin}/dashboard`,
-                  email,
-                })
-              } */
+              className="mt-5 flex w-full items-center justify-center rounded-lg bg-indigo-500 px-4 py-2 text-sm text-white hover:border-indigo-700 hover:bg-indigo-700 focus:border-indigo-700"
               onClick={handleSubmit(onSubmit)}
             >
               <EmailIcon className="mr-2 h-6 w-6" />
-              <span>Iniciar sesión con email</span>
+              <span>Registrarse</span>
             </button>
-            <div className="relative flex w-full items-center py-5">
-              <div className="grow border-t border-gray-400"></div>
-              <span className="mx-4 shrink text-gray-400">o</span>
-              <div className="grow border-t border-gray-400"></div>
-            </div>
-
-            {Object.values(props.providers).map((provider) => {
-              return (
-                provider.name !== 'credentials' && (
-                  <button
-                    key={provider.name}
-                    className="flex w-full items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm text-gray-700 hover:border-gray-500 focus:border-gray-500"
-                    onClick={() =>
-                      signIn(provider.id, {
-                        callbackUrl: `${window.location.origin}/dashboard`,
-                      })
-                    }
-                  >
-                    <FcGoogle className="mr-2 h-6 w-6" />
-                    <span>Iniciar sesión con {provider.name}</span>
-                  </button>
-                )
-              );
-            })}
           </Box>
         </Box>
       </Grid>
@@ -242,11 +217,4 @@ const SignIn = (props: IMainProps) => {
   );
 };
 
-export async function getServerSideProps() {
-  const providers = await getProviders();
-  return {
-    props: { providers },
-  };
-}
-
-export default SignIn;
+export default SignUp;

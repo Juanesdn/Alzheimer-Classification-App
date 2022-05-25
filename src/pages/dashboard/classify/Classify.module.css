@@ -5,3 +5,47 @@
   @apply rounded-xl;
   @apply p-5 mx-10;
 }
+
+.classify__container {
+  @apply mt-10 w-full;
+}
+
+.classify__form_container {
+  @apply flex w-full justify-between;
+}
+
+.image__container {
+  @apply w-5/12;
+}
+
+.form__container {
+  @apply flex w-1/2 flex-col;
+}
+
+@media screen and (max-width: 1200px) {
+  .classify {
+    @apply ml-3;
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  .classify__form_container {
+    @apply flex-col;
+  }
+
+  .image__container {
+    @apply w-full;
+  }
+
+  .form__container {
+    @apply w-full mt-10;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .classify {
+    @apply ml-7 mr-0;
+    @apply pr-5;
+  }
+}

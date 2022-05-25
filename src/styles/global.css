@@ -54,6 +54,7 @@ nav {
   @apply duration-500;
   @apply ease-in-out;
   transform: translateX(100%);
+  
 }
 
 nav ul {
@@ -178,14 +179,16 @@ section.hero > svg > path {
   }
 
   .nav__item {
-    @apply text-white;
+    @apply text-black;
     @apply text-lg;
     padding: 0.5em 1.5em;
   }
 
   .nav__item:hover {
-    @apply bg-transparent;
     @apply underline;
+    @apply rounded-lg;
+    background-color: rgba(256, 256, 256, 0.3);
+
   }
 
   .hero-img {

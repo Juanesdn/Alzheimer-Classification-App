@@ -1,11 +1,13 @@
 import Appbar from '@/components/Appbar/Appbar';
 import { tipsData } from '@/data/Data';
 
+import styles from './Tips.module.css';
+
 const Tips = () => {
   return (
     <>
       <Appbar title="Consejos" />
-      <div className="mx-10 columns-2">
+      <div className={styles.consejos}>
         {tipsData.map((tip) => (
           <a
             key={tip.id}
@@ -18,9 +20,7 @@ const Tips = () => {
               alt=""
             />
             <div className="flex flex-col justify-between p-4 leading-normal">
-              <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                {tip.title}
-              </h5>
+              <h5 className={styles.consejos__title}>{tip.title}</h5>
               <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
                 {tip.description}
               </p>
