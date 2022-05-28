@@ -70,7 +70,6 @@ export const MainDashboard = () => {
               <FaInfoCircle />
             )
           }
-          link={'/card'}
           className="last-scan"
           title={
             lastScan && lastScan.code === 401 ? 'No hay último registro' : ''

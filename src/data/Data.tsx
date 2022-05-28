@@ -75,7 +75,7 @@ export const CardsData = [
     id: 4,
     title: 'SUBIR MI MRI',
     icon: <BiCloudUpload />,
-    link: '/card',
+    link: '/dashboard/classify',
     className: 'mri',
   },
   {

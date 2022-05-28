@@ -10,15 +10,11 @@ import {
 import moment from 'moment';
 import { useEffect, useState } from 'react';
 
-import { MRIResponse } from '@/types';
-
-type Data = {
-  date: string;
-  classification: string;
-};
+import Dialog from '@/components/Dialog/Dialog';
+import { MRI, MRIResponse } from '@/types';
 
 type HeadCell = {
-  id: keyof Data;
+  id: keyof MRIResponse;
   label: string;
 };
 
@@ -26,21 +22,28 @@ type IMainProps = {
   mris: MRIResponse[];
 };
 
-const createData = (date: string, classification: string) => {
-  return { date, classification };
+const createData = (mri: MRI, createdAt: string) => {
+  return { createdAt, mri };
 };
 
 const headCells: readonly HeadCell[] = [
-  { id: 'date', label: 'Fecha' },
-  { id: 'classification', label: 'Clasificación' },
+  { id: 'createdAt', label: 'Fecha' },
+  { id: 'mri', label: 'Clasificación' },
 ];
 
 const Table = (props: IMainProps) => {
-  const [rows, setRows] = useState<Data[]>([]);
+  const [rows, setRows] = useState<MRIResponse[]>([]);
+  const [selectedMRI, setSelectedMRI] = useState<MRIResponse | null>(null);
+  const [open, setOpen] = useState(false);
+
+  const getSelection = (mri: MRIResponse) => {
+    setSelectedMRI(mri);
+    setOpen(true);
+  };
 
   useEffect(() => {
     const data = props.mris.map((mri) => {
-      return createData(mri.createdAt, mri.mri.classification);
+      return createData(mri.mri, mri.createdAt);
     });
     setRows(data);
   }, [props.mris]);
@@ -58,16 +61,22 @@ const Table = (props: IMainProps) => {
           </TableHead>
           <TableBody>
             {rows.map((row, index) => (
-              <TableRow key={index}>
+              <TableRow
+                key={index}
+                onClick={() => getSelection(row)}
+                hover
+                className="cursor-pointer"
+              >
                 <TableCell component="th" scope="row">
-                  {moment(row.date).format('DD/MM/YYYY')}
+                  {moment(row.createdAt).format('DD/MM/YYYY')}
                 </TableCell>
-                <TableCell>{row.classification}</TableCell>
+                <TableCell>{row.mri.classification}</TableCell>
               </TableRow>
             ))}
           </TableBody>
         </MUITable>
       </TableContainer>
+      <Dialog mri={selectedMRI} open={open} setOpen={setOpen} />
     </Paper>
   );
 };

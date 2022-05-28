@@ -1,4 +1,4 @@
-import { MRIResponse, User, UserResponse } from '@/types';
+import { MRI, MRIResponse, User, UserResponse } from '@/types';
 
 export const signUpUser = async (user: User): Promise<UserResponse> => {
   const res = await fetch(`${process.env.API_URL}/auth/register`, {
@@ -53,15 +53,31 @@ export const getUserMRIS = async (
 export const createMRI = async (
   token: string,
   userId: string,
-  mri: MRIResponse
+  mri: MRI
 ): Promise<MRIResponse> => {
-  const res = await fetch(`${process.env.API_URL}/users/${userId}/mris`, {
+  const data = new FormData();
+  data.append('image', mri.image);
+  data.append('age', mri.age as unknown as string);
+  data.append('genre', mri.genre);
+  data.append('user', userId);
+  data.append('observations', mri.observations ?? '');
+
+  const res = await fetch(`${process.env.API_URL}/mri`, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify(mri),
+    body: data,
+  });
+  return res.json();
+};
+
+export const getModelPrediction = async (image: any): Promise<string> => {
+  const data = new FormData();
+  data.append('image', image);
+  const res = await fetch(`${process.env.MODEL_URL}/predict`, {
+    method: 'POST',
+    body: data,
   });
   return res.json();
 };

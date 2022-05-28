@@ -22,15 +22,18 @@ export type UserResponse = {
 export type MRIResponse = {
   code?: number;
   message?: string;
-  mri: {
-    image: string;
-    classification: string;
-    age: number;
-    user: string;
-    id: string;
-    genre: string;
-  };
+  mri: MRI;
   createdAt: string;
+};
+
+export type MRI = {
+  image: string;
+  classification: string;
+  age: number;
+  user: string;
+  id: string;
+  genre: string;
+  observations: string;
 };
 
 export type SessionProps = {

@@ -1,0 +1,45 @@
+.dialog {
+  @apply flex justify-between items-center;
+  @apply mx-8;
+  @apply py-8;
+}
+
+.dialog__image {
+  @apply rounded-xl;
+  @apply overflow-hidden;
+  @apply relative;
+  @apply w-1/2 h-full;
+}
+
+.dialog__info__title {
+  @apply text-3xl;
+  @apply font-bold;
+  @apply mb-2;
+}
+
+.dialog__info__title > span {
+  @apply text-sky-700;
+}
+
+.dialog__info__date {
+  @apply text-sm;
+  @apply font-bold;
+  @apply mb-2;
+}
+
+.dialog__info__descripcion {
+  @apply text-lg;
+  @apply font-bold;
+  @apply mb-2;
+}
+
+.dialog__info__descripcion > span {
+  @apply text-sky-700;
+}
+
+@media screen and (max-width: 1200px) {
+  .dialog {
+    @apply flex-col;
+    @apply text-center;
+  }
+}
