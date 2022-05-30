@@ -83,7 +83,7 @@ export const MainDashboard = () => {
       <div className={styles.dashboard__cardsContainer}>
         <Card
           icon={
-            lastScan && lastScan.code !== 401 ? (
+            lastScan && lastScan.code !== 401 && lastScan.statusCode !== 404 ? (
               <LastScan lastScan={lastScan} />
             ) : (
               <FaInfoCircle />
