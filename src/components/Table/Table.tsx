@@ -42,10 +42,9 @@ const Table = (props: IMainProps) => {
   };
 
   useEffect(() => {
-    const data = props.mris.map((mri) => {
-      return createData(mri.mri!, mri.createdAt);
-    });
-    setRows(data);
+    if (props.mris.length > 0) {
+      setRows(props.mris.map((mri) => createData(mri.mri!, mri.createdAt)));
+    }
   }, [props.mris]);
 
   const getClassification = (classification: string) => {

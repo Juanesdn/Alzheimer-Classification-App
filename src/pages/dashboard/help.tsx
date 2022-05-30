@@ -16,7 +16,7 @@ const Help = () => {
                 Las preguntas más comunes sobre cómo funciona la aplicación.
               </p>
             </div>
-            <div className="-mx-2 flex flex-wrap sm:mx-auto sm:mb-2 lg:w-4/5">
+            <div className="-mx-2 flex justify-center sm:mx-auto sm:mb-2 lg:w-4/5">
               <div className="w-full px-4 py-2 lg:w-1/2">
                 <details className="mb-4">
                   <summary className="rounded-md  bg-gray-200 py-2 px-4 font-semibold">
