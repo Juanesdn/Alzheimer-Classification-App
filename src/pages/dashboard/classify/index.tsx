@@ -14,9 +14,10 @@ import { useState } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
 import Appbar from '@/components/Appbar/Appbar';
+import Dialog from '@/components/Dialog/Dialog';
 import Dropzone from '@/components/Dropzone/Dropzone';
 import { createMRI } from '@/data/api';
-import { SessionProps } from '@/types';
+import { MRIResponse, SessionProps } from '@/types';
 
 import styles from './Classify.module.css';
 
@@ -29,7 +30,9 @@ type Inputs = {
 const Classify = () => {
   const [selectedFile, setSelectedFile] = useState<Blob | MediaSource>();
   const [errorFile, setErrorFile] = useState<boolean>(false);
-  const { enqueueSnackbar } = useSnackbar();
+  const [open, setOpen] = useState<boolean>(false);
+  const [mri, setMri] = useState<MRIResponse | null>();
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
   const { handleSubmit, reset, control } = useForm<Inputs>({
     defaultValues: {
@@ -52,6 +55,11 @@ const Classify = () => {
         return;
       }
 
+      const loading = enqueueSnackbar('Processando...', {
+        variant: 'info',
+        persist: true,
+      });
+
       const reqBody = {
         age: data.age,
         genre: data.genre,
@@ -59,8 +67,6 @@ const Classify = () => {
         userId,
         image: selectedFile,
       };
-
-      /* const prediction = await getModelPrediction(selectedFile); */
 
       await createMRI(
         accessToken as string,
@@ -74,6 +80,9 @@ const Classify = () => {
           });
         }
         if (res.mri) {
+          setMri(res);
+          setOpen(true);
+          closeSnackbar(loading);
           enqueueSnackbar('Clasificación creada con éxito', {
             variant: 'success',
             autoHideDuration: 3000,
@@ -207,6 +216,7 @@ const Classify = () => {
           </div>
         </div>
       </div>
+      <Dialog open={open} setOpen={setOpen} mri={mri} />
     </>
   );
 };

@@ -50,16 +50,28 @@ export const getUserMRIS = async (
   return res.json();
 };
 
+export const getModelPrediction = async (image: any): Promise<any> => {
+  const data = new FormData();
+  data.append('file', image);
+  const res = await fetch(`${process.env.MODEL_URL}/predict`, {
+    method: 'POST',
+    body: data,
+  });
+  return res.text();
+};
+
 export const createMRI = async (
   token: string,
   userId: string,
   mri: MRI
 ): Promise<MRIResponse> => {
+  const classification = await getModelPrediction(mri.image);
   const data = new FormData();
   data.append('image', mri.image);
   data.append('age', mri.age as unknown as string);
   data.append('genre', mri.genre);
   data.append('user', userId);
+  data.append('classification', classification);
   data.append('observations', mri.observations ?? '');
 
   const res = await fetch(`${process.env.API_URL}/mri`, {
@@ -67,16 +79,6 @@ export const createMRI = async (
     headers: {
       Authorization: `Bearer ${token}`,
     },
-    body: data,
-  });
-  return res.json();
-};
-
-export const getModelPrediction = async (image: any): Promise<string> => {
-  const data = new FormData();
-  data.append('image', image);
-  const res = await fetch(`${process.env.MODEL_URL}/predict`, {
-    method: 'POST',
     body: data,
   });
   return res.json();

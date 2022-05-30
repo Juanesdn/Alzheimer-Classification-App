@@ -6,7 +6,7 @@ import { MRIResponse } from '@/types';
 import styles from './Dialog.module.css';
 
 type IMainProps = {
-  mri: MRIResponse | null;
+  mri?: MRIResponse | null;
   setOpen: (open: boolean) => void;
   open: boolean;
 };
