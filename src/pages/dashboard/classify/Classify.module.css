@@ -4,6 +4,11 @@
   @apply bg-white/60;
   @apply rounded-xl;
   @apply p-5 mx-10;
+  @apply overflow-y-scroll
+}
+
+.container {
+  @apply my-10 w-full;
 }
 
 .classify__container {
@@ -47,5 +52,11 @@
   .classify {
     @apply ml-7 mr-0;
     @apply pr-5;
+  }
+}
+
+@media screen and (max-height: 880px) {
+  .container {
+    @apply mt-32;
   }
 }
