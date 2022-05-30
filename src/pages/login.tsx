@@ -198,6 +198,16 @@ const SignIn = (props: IMainProps) => {
                 />
               )}
             />
+
+            <p className="my-3">
+              No tienes una cuenta?{' '}
+              <span
+                className="cursor-pointer text-blue-600"
+                onClick={() => router.push('/register')}
+              >
+                Registrate aquí
+              </span>
+            </p>
             <button
               className="flex w-full items-center justify-center rounded-lg bg-indigo-500 px-4 py-2 text-sm text-white hover:border-indigo-700 hover:bg-indigo-700 focus:border-indigo-700"
               /* onClick={() =>
@@ -209,7 +219,7 @@ const SignIn = (props: IMainProps) => {
               onClick={handleSubmit(onSubmit)}
             >
               <EmailIcon className="mr-2 h-6 w-6" />
-              <span>Iniciar sesión con email</span>
+              <span>Iniciar sesión</span>
             </button>
             <div className="relative flex w-full items-center py-5">
               <div className="grow border-t border-gray-400"></div>

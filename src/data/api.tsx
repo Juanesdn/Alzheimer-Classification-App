@@ -51,13 +51,19 @@ export const getUserMRIS = async (
 };
 
 export const getModelPrediction = async (image: any): Promise<any> => {
-  const data = new FormData();
-  data.append('file', image);
-  const res = await fetch(`${process.env.MODEL_URL}/predict`, {
-    method: 'POST',
-    body: data,
-  });
-  return res.text();
+  try {
+    const data = new FormData();
+    data.append('file', image);
+    const res = await fetch(`${process.env.MODEL_URL}/predict`, {
+      method: 'POST',
+      body: data,
+    });
+    return await res.text();
+  } catch (error) {
+    return {
+      code: 400,
+    };
+  }
 };
 
 export const createMRI = async (
@@ -66,6 +72,12 @@ export const createMRI = async (
   mri: MRI
 ): Promise<MRIResponse> => {
   const classification = await getModelPrediction(mri.image);
+  if (classification.code === 400) {
+    return {
+      code: 400,
+      message: 'La imagen no pudo ser clasificada',
+    };
+  }
   const data = new FormData();
   data.append('image', mri.image);
   data.append('age', mri.age as unknown as string);

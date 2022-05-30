@@ -203,6 +203,15 @@ const SignUp = () => {
                 />
               )}
             />
+            <p className="mt-3">
+              Ya tienes una cuenta?{' '}
+              <span
+                className="cursor-pointer text-blue-600"
+                onClick={() => router.push('/login')}
+              >
+                Inicia Sesión
+              </span>
+            </p>
             <button
               className="mt-5 flex w-full items-center justify-center rounded-lg bg-indigo-500 px-4 py-2 text-sm text-white hover:border-indigo-700 hover:bg-indigo-700 focus:border-indigo-700"
               onClick={handleSubmit(onSubmit)}

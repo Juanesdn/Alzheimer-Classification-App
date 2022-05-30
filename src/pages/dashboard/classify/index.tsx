@@ -74,6 +74,8 @@ const Classify = () => {
         reqBody as any
       ).then((res) => {
         if (res.code === 400) {
+          closeSnackbar(loading);
+
           enqueueSnackbar(res.message, {
             variant: 'error',
             autoHideDuration: 3000,
@@ -83,6 +85,7 @@ const Classify = () => {
           setMri(res);
           setOpen(true);
           closeSnackbar(loading);
+
           enqueueSnackbar('Clasificación creada con éxito', {
             variant: 'success',
             autoHideDuration: 3000,
@@ -99,6 +102,22 @@ const Classify = () => {
     <>
       <Appbar title="Clasificar" />
       <div className={styles.classify}>
+        <div className="mb-5 flex w-full flex-col">
+          <h3 className="text-lg font-bold">Cómo clasificar una imagen</h3>
+          <ol>
+            <li>
+              1. Seleccione una imagen de su computador o de su dispositivo
+              móvil. Esta debe ser de la resonancia magnética.
+            </li>
+            <li>2. Escriba la edad del paciente</li>
+            <li>3. Seleccionar el género</li>
+            <li>4. Escribir algún tipo de comentario en caso de que exista</li>
+            <li>
+              5. Presione el botón{' '}
+              <span className="text-blue-500">Clasificar</span>
+            </li>
+          </ol>
+        </div>
         <Dropzone
           setSelectedFile={setSelectedFile}
           error={errorFile}

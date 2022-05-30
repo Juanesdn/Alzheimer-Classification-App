@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import Appbar from '@/components/Appbar/Appbar';
 
 const Help = () => {
@@ -19,39 +20,70 @@ const Help = () => {
               <div className="w-full px-4 py-2 lg:w-1/2">
                 <details className="mb-4">
                   <summary className="rounded-md  bg-gray-200 py-2 px-4 font-semibold">
-                    How Long is this site live?
+                    Cómo puedo clasificar una imagen?
                   </summary>
 
-                  <span>
-                    Laboris qui labore cillum culpa in sunt quis sint veniam.
-                    Dolore ex aute deserunt esse ipsum elit aliqua. Aute quis
-                    minim velit nostrud pariatur culpa magna in aute.
+                  <span className="text-black">
+                    Primeramente es necesario dirigirse a la sección
+                    <span className="font-bold"> Clasificar</span>. Luego de
+                    esto, seguir los siguientes pasos:
+                    <ol>
+                      <li>
+                        1. Seleccione una imagen de su computador o de su
+                        dispositivo móvil (Android, iOS, Windows, etc.)
+                      </li>
+                      <li>2. Escriba la edad del paciente</li>
+                      <li>3. Seleccionar el género</li>
+                      <li>
+                        4. Escribir algún tipo de comentario en caso de que
+                        exista
+                      </li>
+                      <li>
+                        5. Presione el botón{' '}
+                        <span className="font-bold"> Clasificar</span>
+                      </li>
+                    </ol>
                   </span>
                 </details>
                 <details className="mb-4">
                   <summary className="rounded-md bg-gray-200 py-2 px-4 font-semibold">
-                    Can I install/upload anything I want on there?
+                    Qué tipo de modelo utilizan para la clasificación de
+                    imágenes?
                   </summary>
 
-                  <span>
-                    Laboris qui labore cillum culpa in sunt quis sint veniam.
-                    Dolore ex aute deserunt esse ipsum elit aliqua. Aute quis
-                    minim velit nostrud pariatur culpa magna in aute.
+                  <span className="text-black">
+                    Utilizamos el modelo VGG16_BN, una red neuronal basada en
+                    convolusiones con normalización por grupos
                   </span>
                 </details>
                 <details className="mb-4">
                   <summary className="rounded-md  bg-gray-200 py-2 px-4 font-semibold">
-                    How can I migrate to another site?
+                    Qué tipos de clasificaciones manejan?
                   </summary>
 
                   <span>
-                    Laboris qui labore cillum culpa in sunt quis sint veniam.
-                    Dolore ex aute deserunt esse ipsum elit aliqua. Aute quis
-                    minim velit nostrud pariatur culpa magna in aute.
+                    <ul>
+                      <li>
+                        <span className="font-bold">No hay demencia</span> (No
+                        se sabe)
+                      </li>
+                      <li>
+                        <span className="font-bold">Demencia muy leve</span> (Se
+                        sabe que es demencia)
+                      </li>
+                      <li>
+                        <span className="font-bold">Demencia leve</span> (Se
+                        sabe que es demencia)
+                      </li>
+                      <li>
+                        <span className="font-bold">Demencia moderada</span> (Se
+                        sabe que es demencia)
+                      </li>
+                    </ul>
                   </span>
                 </details>
               </div>
-              <div className="w-full px-4 py-2 lg:w-1/2">
+              {/* <div className="w-full px-4 py-2 lg:w-1/2">
                 <details className="mb-4">
                   <summary className="rounded-md  bg-gray-200 py-2 px-4 font-semibold">
                     Can I change the domain you give me?
@@ -85,7 +117,7 @@ const Help = () => {
                     minim velit nostrud pariatur culpa magna in aute.
                   </span>
                 </details>
-              </div>
+              </div> */}
             </div>
           </div>
         </section>

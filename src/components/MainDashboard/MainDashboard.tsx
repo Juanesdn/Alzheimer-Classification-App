@@ -16,6 +16,20 @@ type LastScanProps = {
 };
 
 const LastScan = ({ lastScan }: LastScanProps) => {
+  const getClassification = (classification: string) => {
+    switch (classification) {
+      case 'MildDemented':
+        return 'Demencia leve';
+      case 'ModerateDemented':
+        return 'NonDemented';
+      case 'VeryMildDemented':
+        return 'Demencia muy leve';
+      case 'NonDemented':
+        return 'No hay demencia';
+      default:
+        return 'No identificado';
+    }
+  };
   return (
     <div className={styles.lastScan}>
       <div className={styles.lastScan__info}>
@@ -24,16 +38,21 @@ const LastScan = ({ lastScan }: LastScanProps) => {
           {moment(lastScan.createdAt).format('DD/MM/YYYY')}
         </div>
         <div className={styles.lastScan__info__descripcion}>
-          Clasificación: <span>{lastScan.mri.classification}</span>
+          Clasificación:{' '}
+          <span>{getClassification(lastScan.mri!.classification)}</span>
         </div>
         <div className={styles.lastScan__info__descripcion}>
-          Edad: <span>{lastScan.mri.age} años</span>
+          Edad: <span>{lastScan.mri!.age} años</span>
         </div>
         <div className={styles.lastScan__info__descripcion}>
-          Género: <span>{lastScan.mri.genre}</span>
+          Género: <span>{lastScan.mri!.genre}</span>
         </div>
       </div>
-      <img className={styles.lastScan__image} src={lastScan.mri.image} alt="" />
+      <img
+        className={styles.lastScan__image}
+        src={lastScan.mri!.image}
+        alt=""
+      />
     </div>
   );
 };

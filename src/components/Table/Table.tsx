@@ -22,7 +22,7 @@ type IMainProps = {
   mris: MRIResponse[];
 };
 
-const createData = (mri: MRI, createdAt: string) => {
+const createData = (mri: MRI, createdAt: string | undefined) => {
   return { createdAt, mri };
 };
 
@@ -43,10 +43,25 @@ const Table = (props: IMainProps) => {
 
   useEffect(() => {
     const data = props.mris.map((mri) => {
-      return createData(mri.mri, mri.createdAt);
+      return createData(mri.mri!, mri.createdAt);
     });
     setRows(data);
   }, [props.mris]);
+
+  const getClassification = (classification: string) => {
+    switch (classification) {
+      case 'MildDemented':
+        return 'Demencia leve';
+      case 'ModerateDemented':
+        return 'NonDemented';
+      case 'VeryMildDemented':
+        return 'Demencia muy leve';
+      case 'NonDemented':
+        return 'No hay demencia';
+      default:
+        return 'No identificado';
+    }
+  };
 
   return (
     <Paper sx={{ width: '90%', ml: 4, overflow: 'hidden' }}>
@@ -70,7 +85,9 @@ const Table = (props: IMainProps) => {
                 <TableCell component="th" scope="row">
                   {moment(row.createdAt).format('DD/MM/YYYY')}
                 </TableCell>
-                <TableCell>{row.mri.classification}</TableCell>
+                <TableCell>
+                  {getClassification(row.mri!.classification)}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>

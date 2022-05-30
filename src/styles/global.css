@@ -118,7 +118,7 @@ section.hero .title {
 }
 
 /* down arrow */
-section.hero svg {
+.down-arrow svg {
   @apply absolute;
   @apply bottom-32;
   @apply w-4;
@@ -126,7 +126,7 @@ section.hero svg {
   animation: moveArrow 1s alternate-reverse infinite;
 }
 
-section.hero > svg > path {
+.down-arrow > svg > path {
   @apply fill-white;
 }
 
@@ -213,13 +213,13 @@ section.hero > svg > path {
     @apply mb-32;
   }
 
-  section.hero svg {
+  .down-arrow svg {
     @apply stroke-black;
     @apply mt-20;
     position: unset;
   }
 
-  section.hero svg path {
+  .down-arrow svg path {
     @apply fill-black;
   }
 

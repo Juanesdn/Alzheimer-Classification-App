@@ -22,8 +22,8 @@ export type UserResponse = {
 export type MRIResponse = {
   code?: number;
   message?: string;
-  mri: MRI;
-  createdAt: string;
+  mri?: MRI;
+  createdAt?: string;
 };
 
 export type MRI = {

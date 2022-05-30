@@ -4,8 +4,8 @@ import {
   BiClipboard,
   BiCloudUpload,
   BiHomeAlt,
+  BiNews,
   BiSearch,
-  BiUser,
 } from 'react-icons/bi';
 import { VscGraphLine } from 'react-icons/vsc';
 
@@ -33,8 +33,8 @@ export const SidebarData = [
   },
   {
     id: 4,
-    title: 'Consejos',
-    icon: <BiUser />,
+    title: 'Boletin',
+    icon: <BiNews />,
     link: '/dashboard/tips',
   },
   {
@@ -59,8 +59,8 @@ export const CardsData = [
   },
   {
     id: 2,
-    title: 'CONSEJOS',
-    icon: <BiUser />,
+    title: 'BOLETIN INFORMATIVO',
+    icon: <BiNews />,
     link: '/dashboard/tips',
     className: 'consejos',
   },
@@ -90,26 +90,36 @@ export const CardsData = [
 export const tipsData = [
   {
     id: 1,
-    title: 'Noteworthy technology acquisitions 2021',
+    title:
+      'Las siestas diurnas en personas mayores pueden indicar demencia/Alzheimer',
     description:
-      'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.',
+      'La siesta diurna en los ancianos es una parte normal del envejecimiento, pero también puede presagiar la enfermedad de Alzheimer y otras demencias.',
+    image: '/assets/images/news1.webp',
+    link: 'https://scitechdaily.com/daytime-napping-in-seniors-may-signal-dementia-alzheimers-disease/',
   },
   {
     id: 2,
-    title: 'Noteworthy technology acquisitions 2021',
+    title: 'Proteína repleta de azúcar relacionada con el Alzheimer',
     description:
-      'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.',
+      'Investigadores de medicina del hospital Johns Hopkins dicen que han descubierto que un azúcar especial molécula podría desempeñar un papel importante en el desarrollo de alzheimer',
+    image: '/assets/images/news2.webp',
+    link: 'https://scitechdaily.com/reverse-engineering-brain-tissue-reveals-sugar-studded-protein-linked-to-alzheimers-disease/',
   },
   {
     id: 3,
-    title: 'Noteworthy technology acquisitions 2021',
+    title: 'Eslabón perdido entre el Alzheimer y la enfermedad vascular',
     description:
-      'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.',
+      'El gen FMNL2 vincula la enfermedad cerebrovascular y la enfermedad de Alzheimer, informa un nuevo estudio.',
+    image: '/assets/images/news3.webp',
+    link: 'https://neurosciencenews.com/genetics-cerebrovascular-alzheimers-20669/',
   },
   {
-    id: 4,
-    title: 'Noteworthy technology acquisitions 2021',
+    id: 3,
+    title:
+      'Las siestas diurnas en personas mayores pueden indicar demencia/Alzheimer',
     description:
-      'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.',
+      'La siesta diurna en los ancianos es una parte normal del envejecimiento, pero también puede presagiar la enfermedad de Alzheimer y otras demencias.',
+    image: '/assets/images/news1.webp',
+    link: 'https://scitechdaily.com/daytime-napping-in-seniors-may-signal-dementia-alzheimers-disease/',
   },
 ];
