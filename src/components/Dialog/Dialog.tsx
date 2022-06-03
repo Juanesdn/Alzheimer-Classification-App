@@ -21,7 +21,7 @@ const Dialog = ({ mri, setOpen, open }: IMainProps) => {
       case 'MildDemented':
         return 'Demencia leve';
       case 'ModerateDemented':
-        return 'NonDemented';
+        return 'Demencia Moderada';
       case 'VeryMildDemented':
         return 'Demencia muy leve';
       case 'NonDemented':
